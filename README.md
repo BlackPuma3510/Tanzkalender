@@ -4,7 +4,7 @@ Statische Webseite mit drei Seiten:
 
 - `index.html` – **Kalender** mit Monatsansicht, Filter nach Art und Liste der nächsten Termine
 - `angebot.html` – **Angebot**: Salsa Abend, Fiesta Latina und Tanzkurs
-- `team.html` – **Über uns**: Jonny, Sven und Jessy
+- `team.html` – **Über uns**: Sven, Jessica und Jonny
 
 ## Termine eintragen
 
