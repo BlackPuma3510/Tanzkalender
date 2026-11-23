@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalender – Tanzkalender Bayreuth und Umgebung</title>
+  <meta name="description" content="Tanzkalender Bayreuth und Umgebung: Salsa Abende, Fiesta Latina und Tanzkurse.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💃</text></svg>">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a class="brand" href="index.html">💃 Tanzkalender Bayreuth<small>und Umgebung</small></a>
+      <ul>
+        <li><a class="navlink active" aria-current="page" href="index.html">Kalender</a></li>
+        <li><a class="navlink" href="angebot.html">Angebot</a></li>
+        <li><a class="navlink" href="team.html">Über uns</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h1>Tanzkalender Bayreuth und Umgebung</h1>
+      <p>Alle Salsa Abende, Fiestas Latinas und Tanzkurse in Bayreuth und der Region – auf einen Blick.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="cal-title">
+      <div class="cal-head">
+        <button class="cal-btn" id="cal-prev" type="button" aria-label="Vorheriger Monat">‹</button>
+        <h2 id="cal-title">Kalender</h2>
+        <button class="cal-btn" id="cal-next" type="button" aria-label="Nächster Monat">›</button>
+      </div>
+      <div class="legend" id="legend" aria-label="Nach Art filtern"></div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <p style="text-align:center;margin:16px 0 0">
+        <button class="cal-btn" id="cal-today" type="button">Heute</button>
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Nächste Termine</h2>
+      <ul class="event-list" id="event-list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Tanzkalender Bayreuth und Umgebung · Jonny, Sven &amp; Jessy</p>
+  </footer>
+  <script src="assets/termine.js"></script>
+  <script src="assets/kalender.js"></script>
+</body>
+</html>
