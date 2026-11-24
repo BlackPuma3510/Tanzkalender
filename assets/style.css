@@ -9,6 +9,7 @@
   --salsa: #e4572e;
   --fiesta: #f2a900;
   --kurs: #2a9d8f;
+  --extern: #8a8a8a;
   --radius: 14px;
   --shadow: 0 6px 24px rgba(60, 20, 30, 0.08);
 }
@@ -152,6 +153,7 @@ h2 { margin-top: 0; }
 .type-salsa { --type: var(--salsa); }
 .type-fiesta { --type: var(--fiesta); }
 .type-kurs { --type: var(--kurs); }
+.type-extern { --type: var(--extern); }
 .dot { background: var(--type); }
 
 /* ---------- Kalender ---------- */
@@ -275,10 +277,37 @@ h2 { margin-top: 0; }
 
 .empty { color: var(--muted); font-style: italic; }
 
+/* Ablaufplan */
+.ablauf {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  border-left: 2px solid color-mix(in srgb, var(--type) 45%, transparent);
+}
+.ablauf li {
+  display: grid;
+  grid-template-columns: 7.5em 1fr;
+  gap: 8px;
+  padding: 2px 0 2px 12px;
+  position: relative;
+  font-size: 0.95rem;
+}
+.ablauf li::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 0.65em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--type);
+}
+.ablauf .zeit { font-weight: 600; white-space: nowrap; }
+
 /* ---------- Angebot ---------- */
 .offers {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   gap: 24px;
 }
 
@@ -304,6 +333,48 @@ h2 { margin-top: 0; }
   color: var(--muted);
 }
 
+/* Gestaffelter Ablauf auf der Angebotsseite */
+.steps { list-style: none; counter-reset: step; padding: 0; margin: 12px 0 0; }
+.steps li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 14px 44px;
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  background: var(--type);
+  color: #3a2a00;
+}
+.steps li::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 32px;
+  bottom: 2px;
+  width: 2px;
+  background: color-mix(in srgb, var(--type) 40%, transparent);
+}
+.steps li:last-child::after { display: none; }
+.steps strong { display: block; }
+
+.soon {
+  margin: 12px 0;
+  padding: 24px 16px;
+  text-align: center;
+  border: 2px dashed color-mix(in srgb, var(--type) 50%, transparent);
+  border-radius: 12px;
+}
+.soon strong { display: block; font-size: 1.5rem; color: var(--type); letter-spacing: 1px; }
+
 /* ---------- Team ---------- */
 .team {
   display: grid;
@@ -312,6 +383,8 @@ h2 { margin-top: 0; }
 }
 
 .person { text-align: center; }
+
+img.avatar { display: block; padding: 0; }
 
 .avatar {
   width: 140px;
@@ -365,4 +438,5 @@ footer {
     border-radius: 3px;
   }
   .event-item { grid-template-columns: 56px 1fr; gap: 12px; }
+  .ablauf li { grid-template-columns: 1fr; gap: 0; }
 }

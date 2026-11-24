@@ -13,7 +13,7 @@ Alle Termine stehen in `assets/termine.js`. Einfach einen neuen Eintrag hinzufü
 ```js
 {
   datum: "2026-12-05", beginn: "20:00", ende: "01:00",
-  art: "salsa",            // "salsa" | "fiesta" | "kurs"
+  art: "salsa",            // "salsa" | "fiesta" | "kurs" | "extern"
   titel: "Salsa Abend", ort: "Bayreuth",
   beschreibung: "Kurzer Text"
 },

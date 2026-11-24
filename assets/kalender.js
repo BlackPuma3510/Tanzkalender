@@ -4,7 +4,8 @@
   const ARTEN = {
     salsa:  { name: "Salsa Abend" },
     fiesta: { name: "Fiesta Latina" },
-    kurs:   { name: "Tanzkurs" }
+    kurs:   { name: "Tanzkurs" },
+    extern: { name: "Externe Veranstaltung" }
   };
 
   const MONATE = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli",
@@ -106,8 +107,10 @@
           <h3>${esc(t.titel)}</h3>
           <div class="event-meta">
             ${TAGE_LANG[t.date.getDay()]}, ${t.date.getDate()}. ${MONATE[t.date.getMonth()]} ·
-            ${esc(t.beginn)}${t.ende ? "–" + esc(t.ende) : ""} Uhr · ${esc(t.ort)}
+            ${t.ende ? esc(t.beginn) + "–" + esc(t.ende) : "ab " + esc(t.beginn)} Uhr · ${esc(t.ort)}
           </div>
+          ${Array.isArray(t.ablauf) && t.ablauf.length ? `<ul class="ablauf">${t.ablauf.map(([zeit, was]) =>
+            `<li><span class="zeit">${esc(zeit)}</span><span>${esc(was)}</span></li>`).join("")}</ul>` : ""}
           ${t.beschreibung ? `<p>${esc(t.beschreibung)}</p>` : ""}
         </div>
       </li>`).join("");

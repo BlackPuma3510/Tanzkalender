@@ -7,67 +7,75 @@
  *
  *  {
  *    datum: "2026-12-05",          // Format JJJJ-MM-TT
- *    beginn: "20:00",
- *    ende: "01:00",                // optional
- *    art: "salsa",                 // "salsa" | "fiesta" | "kurs"
+ *    beginn: "21:00",
+ *    ende: "02:00",                // optional
+ *    art: "salsa",                 // "salsa" | "fiesta" | "kurs" | "extern"
  *    titel: "Salsa Abend",
  *    ort: "Ort, Straße, Stadt",
- *    beschreibung: "Kurzer Text"   // optional
+ *    ablauf: [                     // optional: Ablaufplan (Uhrzeit, Programmpunkt)
+ *      ["21:00", "Einlass"],
+ *      ["21:15", "Kostenloser Workshop"]
+ *    ],
+ *    beschreibung: "Kurzer Text"   // optional, z. B. für externe Veranstaltungen
  *  },
  *
  *  Die Reihenfolge ist egal – der Kalender sortiert automatisch.
  *  Hinweis: Die folgenden Einträge sind BEISPIELTERMINE.
  */
 
+// Standard-Ablauf für Salsa Abende und Fiestas – kann pro Termin überschrieben werden
+const ABLAUF_STANDARD = [
+  ["21:00", "Einlass"],
+  ["21:15", "Kostenloser Workshop – ohne Vorkenntnisse"],
+  ["22:00–24:00", "Freies Tanzen (Salsa, Bachata, Merengue)"],
+  ["ab 24:00", "Zeit für Songwünsche & Latin Party"]
+];
+
 const TERMINE = [
   {
-    datum: "2026-11-27", beginn: "20:00", ende: "00:30", art: "salsa",
+    datum: "2026-11-27", beginn: "21:00", art: "salsa",
     titel: "Salsa Abend", ort: "Bayreuth Innenstadt",
-    beschreibung: "Freies Tanzen zu Salsa, Bachata & Kizomba. Ab 19:30 kurzer Schnupper-Workshop."
-  },
-  {
-    datum: "2026-11-30", beginn: "19:00", ende: "20:30", art: "kurs",
-    titel: "Salsa Grundkurs – Start", ort: "Tanzstudio Bayreuth",
-    beschreibung: "6 Abende, jeweils montags. Ohne Vorkenntnisse, auch ohne Partner:in."
+    ablauf: ABLAUF_STANDARD
   },
   {
     datum: "2026-12-05", beginn: "21:00", ende: "02:00", art: "fiesta",
     titel: "Fiesta Latina", ort: "Bayreuth",
-    beschreibung: "Die große Latin-Party mit DJ, Animation und Cocktails."
+    ablauf: ABLAUF_STANDARD
   },
   {
-    datum: "2026-12-11", beginn: "20:00", ende: "00:30", art: "salsa",
+    datum: "2026-12-11", beginn: "21:00", art: "salsa",
     titel: "Salsa Abend", ort: "Kulmbach",
-    beschreibung: "Salsa Abend in der Umgebung – gemütlich und familiär."
+    ablauf: ABLAUF_STANDARD
   },
   {
-    datum: "2026-12-14", beginn: "20:30", ende: "22:00", art: "kurs",
-    titel: "Bachata Workshop", ort: "Tanzstudio Bayreuth",
-    beschreibung: "Workshop für Einsteiger:innen und Leicht-Fortgeschrittene."
+    datum: "2026-12-13", beginn: "20:00", art: "extern",
+    titel: "Beispiel: Externe Tanzveranstaltung", ort: "Bamberg",
+    beschreibung: "Veranstaltung eines anderen Veranstalters – Infos beim Veranstalter."
   },
   {
     datum: "2026-12-19", beginn: "21:00", ende: "02:00", art: "fiesta",
     titel: "Fiesta Latina – Weihnachtsspecial", ort: "Bayreuth",
-    beschreibung: "Letzte Fiesta des Jahres mit Weihnachts-Überraschungen."
+    ablauf: ABLAUF_STANDARD
   },
   {
     datum: "2026-12-31", beginn: "21:00", ende: "03:00", art: "fiesta",
     titel: "Silvester Fiesta Latina", ort: "Bayreuth",
-    beschreibung: "Ins neue Jahr tanzen – mit Mitternachts-Rueda."
+    ablauf: [
+      ["21:00", "Einlass"],
+      ["21:15", "Kostenloser Workshop – ohne Vorkenntnisse"],
+      ["22:00–24:00", "Freies Tanzen (Salsa, Bachata, Merengue)"],
+      ["24:00", "Anstoßen aufs neue Jahr"],
+      ["ab 00:15", "Songwünsche & Latin Party"]
+    ]
   },
   {
-    datum: "2027-01-08", beginn: "20:00", ende: "00:30", art: "salsa",
+    datum: "2027-01-08", beginn: "21:00", art: "salsa",
     titel: "Salsa Abend", ort: "Bayreuth Innenstadt",
-    beschreibung: "Der erste Salsa Abend im neuen Jahr."
-  },
-  {
-    datum: "2027-01-11", beginn: "19:00", ende: "20:30", art: "kurs",
-    titel: "Salsa Grundkurs – Neuer Kurs", ort: "Tanzstudio Bayreuth",
-    beschreibung: "Neuer 6-Wochen-Kurs für Anfänger:innen."
+    ablauf: ABLAUF_STANDARD
   },
   {
     datum: "2027-01-23", beginn: "21:00", ende: "02:00", art: "fiesta",
     titel: "Fiesta Latina", ort: "Bayreuth",
-    beschreibung: "Salsa, Bachata, Reggaeton & Merengue bis tief in die Nacht."
+    ablauf: ABLAUF_STANDARD
   }
 ];
